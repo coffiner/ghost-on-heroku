@@ -1,53 +1,32 @@
 ghost-on-heroku
 ===============
 
-ÑİÊ¾Ò³£ºstudiofnt.herokuapp.com
+æ¼”ç¤ºé¡µï¼šstudiofnt.herokuapp.com
 
+ç¬¬ä¸€æ­¥ï¼šæŠŠherokuä½œä¸ºnodejsç¯å¢ƒ
 
-µÚÒ»²½£º°Ñheroku×÷Îªnodejs»·¾³
+$ vi Procfile
 
-$ vi Procfile 
+æ’å…¥ï¼šweb: node index.js --production
 
-²åÈë£ºweb: node index.js --production
+escè¿”å›ï¼Œ:wqé€€å‡º
 
-esc·µ»Ø£¬:wqÍË³ö
+ç¬¬ä¸€ç§ï¼šæŠŠconfig.jsé‡Œé¢çš„productionè¿™æ®µçš„hostå¯¹ç…§addonä¸Šé¢çš„postsqlä¸Šé¢çš„å¸å·å’Œå¯†ç å³å¯
 
+ç„¶ågit cloneäº†è¿™ä¸ªæœ¬gitåè®°å¾—
 
+$ git init //è¿™ä¸ªæ˜¯åŒæ­¥ $ git add . //è¿™ä¸ªæ˜¯æ·»åŠ åˆ°ä½ çš„gitåº“é‡Œé¢ $ git commit -m "è¿™é‡Œéšä¾¿ä½ å†™" //è¿™ä¸ªæ˜¯ä½ åŒæ­¥çš„æ³¨é‡Š $ git push //æäº¤åˆ°herokuç‰ˆæœ¬åº“é‡Œé¢
 
-µÚÒ»ÖÖ£º°Ñconfig.jsÀïÃæµÄproductionÕâ¶ÎµÄhost¶ÔÕÕaddonÉÏÃæµÄpostsqlÉÏÃæµÄÕÊºÅºÍÃÜÂë¼´¿É
+æ³¨æ„ï¼šåŒæ­¥åä¼šè‡ªåŠ¨npm Installæ‰€æœ‰package.jsonä¸Šé¢çš„ä¸œè¥¿ã€‚
 
-È»ºógit cloneÁËÕâ¸ö±¾gitºó¼ÇµÃ
+ç¬¬äºŒç§ï¼šåœ¨herokuä¸Šæ·»åŠ Envï¼ˆç¯å¢ƒçš„æ„æ€ï¼‰ åœ¨configä¸Šé¢çš„databaseæ”¹æˆå¦‚ä¸‹ï¼š
 
-$ git init                        //Õâ¸öÊÇÍ¬²½
-$ git add .                      //Õâ¸öÊÇÌí¼Óµ½ÄãµÄgit¿âÀïÃæ
-$ git commit -m "ÕâÀïËæ±ãÄãĞ´"  //Õâ¸öÊÇÄãÍ¬²½µÄ×¢ÊÍ
-$ git push                     //Ìá½»µ½heroku°æ±¾¿âÀïÃæ
+database: { client: 'postgres', connection: { host: process.env.POSTGRES_HOST, user: process.env.POSTGRES_USER, password: process.env.POSTGRES_PASSWORD, database: process.env.POSTGRES_DATABASE, port: '5432' }
 
-×¢Òâ£ºÍ¬²½ºó»á×Ô¶¯npm InstallËùÓĞpackage.jsonÉÏÃæµÄ¶«Î÷¡£
+ç„¶ååœ¨è®¾ç½®Envï¼ˆå½“ç„¶ä½ å…ˆå¾—æŠŠheroku login ç™»å½•ä½ çš„å¸å·å’Œå¯†ç ï¼Œæç¤ºä½ è¾“å…¥publickeyç‚¹è¾“å…¥yï¼Œä¹‹åheroku keys:add ~/.ssh/id_rsa.pub ã€ä¸€èˆ¬winä¸‹çš„è·¯å¾„æ˜¯C:\Documents and Settings\Administrator.sshç”Ÿæˆçš„å¯†é’¥ã€‚ã€‘ï¼‰
 
+$ heroku config:set POSTGRES_HOST=host $ heroku config:set POSTGRES_USER=user $ heroku config:set POSTGRES_PASSWORD=password $ heroku config:set POSTGRES_DATABASE=database
 
-
-µÚ¶şÖÖ£ºÔÚherokuÉÏÌí¼ÓEnv£¨»·¾³µÄÒâË¼£©
-ÔÚconfigÉÏÃæµÄdatabase¸Ä³ÉÈçÏÂ£º
-
-database: {
-        client: 'postgres',
-        connection: {
-              host: process.env.POSTGRES_HOST,
-              user: process.env.POSTGRES_USER,
-              password: process.env.POSTGRES_PASSWORD,
-              database: process.env.POSTGRES_DATABASE,
-              port: '5432'
-        }
-
-È»ºóÔÚÉèÖÃEnv£¨µ±È»ÄãÏÈµÃ°Ñheroku login µÇÂ¼ÄãµÄÕÊºÅºÍÃÜÂë£¬ÌáÊ¾ÄãÊäÈëpublickeyµãÊäÈëy£¬Ö®ºóheroku keys:add ~/.ssh/id_rsa.pub  ¡¾Ò»°ãwinÏÂµÄÂ·¾¶ÊÇC:\Documents and Settings\Administrator\.sshÉú³ÉµÄÃÜÔ¿¡£¡¿£©
-
-$ heroku config:set POSTGRES_HOST=host
-$ heroku config:set POSTGRES_USER=user
-$ heroku config:set POSTGRES_PASSWORD=password
-$ heroku config:set POSTGRES_DATABASE=database
-
-ÉèÖÃºÃÁË¼´¿É~
-
+è®¾ç½®å¥½äº†å³å¯~
 
 
